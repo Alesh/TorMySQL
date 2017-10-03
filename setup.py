@@ -12,7 +12,6 @@ setup(
     install_requires=[
         'tornado>=4.5',
         'PyMySQL>=0.7.10',
-        'greenlet>=0.4.2',
     ],
     author='snower, mosquito',
     author_email='sujian199@gmail.com, me@mosquito.su',

@@ -4,7 +4,6 @@
 
 from __future__ import absolute_import, division, print_function, with_statement
 
-import greenlet
 import socket
 import sys
 import struct
@@ -18,6 +17,12 @@ from pymysql.connections import _scramble, _scramble_323
 from tornado.concurrent import Future
 from tornado.iostream import IOStream as BaseIOStream, StreamClosedError, errno_from_exception, _ERRNO_WOULDBLOCK
 from tornado.ioloop import IOLoop
+
+try:
+    import greenlet
+except ImportError:
+    from tornado.util import ObjectDict
+    ObjectDict({'getcurrent': lambda:ObjectDict({'parent': True})})
 
 
 if sys.version_info[0] >= 3:
